@@ -1,0 +1,35 @@
+#Create List In python using dictionary 
+
+class creating_arr:
+    def __init__(self):
+        self.item={}
+        self.length=0
+    def insert(self,val):
+        self.item[self.length]=val;
+        self.length+=1
+    def removeLast(self):
+        valu=self.item[self.length-1]
+        print(valu)
+        del self.item[self.length-1]
+        self.length-=1
+        
+    def removeIndex(self,index):
+        del self.item[index]
+        #print(self.item)
+        self.removed(index)
+    def removed(self,index):
+        for i in range(index,(self.length)-1):
+            #print(i)
+            self.item[i]=self.item[i+1]
+        del self.item[self.length-1]
+        self.length-=1
+        
+first=creating_arr()
+first.insert('0')
+first.insert('4')
+first.insert('1')
+first.insert('2')
+first.insert('3')
+first.removeIndex(1)
+print(first.item)
+print(first.length)
