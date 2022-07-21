@@ -1,0 +1,17 @@
+def reverseStr(str):
+    length=len(str)-1
+    first=0
+    mylist=[]
+    newstr=''
+    for i in range(length,0,-1):
+        mylist.insert(first,str[i])
+        first+=1
+    for j in mylist:
+        newstr+=j
+    return newstr
+    
+def reversestr1(str):
+    return str[::-1]
+        
+num=reverseStr('my name is sandeep')
+print(num)
