@@ -1,0 +1,41 @@
+class hashTable{
+    constructor(size){
+        let arr=new Array(size);
+        let keys=[];
+    }
+    _hash(key) {
+      let hash = 0;
+      for (let i = 0; i < key.length; i++) {
+        hash += key.charCodeAt(i);
+      }
+      return hash;
+    }
+    add(key,value){
+        let position=this._hash(key);
+        console.log(position);
+        if(!this.arr[position]){
+            this.arr[position]=[];
+        }
+        this.arr[position].push(key,value);
+        console.log(this.arr);
+    }
+    getdata(key){
+        let position=this._hash(key);
+        let value=this.arr[key];
+        for(let i=0;i<value.length;i++){
+            if(this.arr[position][0]==key){
+                return this.arr[position][1]
+            }
+        }
+    }
+    keys(){
+        for(let i=0;i<this.arr.length;i++){
+            this.keys.push(this.arr[i][0][0]);
+        }
+        return this.keys;
+    }
+}
+
+let hast=new hashTable(2);
+hast.add('num','cool');
+hast.add('num',23)
