@@ -1,0 +1,41 @@
+class linkedlist{
+    constructor(value){
+        this.head={
+            value:value,
+            next:null
+        }
+        this.tail=this.head;
+        this.length=1;
+    }
+    append(value){
+        let addlinked={
+            value:value,
+            next:null
+        }
+        this.tail.next=addlinked;
+        this.tail=addlinked;
+        this.length+=1;
+    }
+    prepend(value){
+        let addlinked={
+            value:value,
+            next:this.head
+        }
+        this.head=addlinked;
+        this.length+=1;
+    }
+    insert(index,value){
+        let addlinked={
+            value:value,
+            
+        }
+    }
+
+}
+
+
+const mylinkedlist=new linkedlist(10);
+mylinkedlist.append(20);
+mylinkedlist.append(30);
+mylinkedlist.prepend(4);
+console.log(mylinkedlist);
