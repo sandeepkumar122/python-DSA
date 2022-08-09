@@ -23,12 +23,32 @@ class linkedlist{
         }
         this.head=addlinked;
         this.length+=1;
+      
+    }
+    printList(){
+        let arr1=[];
+        let currentNode=this.head;
+        let value=0
+        while(currentNode!==null){
+            arr1.push(currentNode.value);
+            currentNode=currentNode.next;
+        }
+        return arr1;
     }
     insert(index,value){
-        let addlinked={
-            value:value,
+        let currentNode=this.head;
+        let arr1=[];
+        let num=index;
+        for(let i=0;i<=index;i++){
+            if(i==num){
+                currentNode.value=value;
+                currentNode.next=currentNode.next;
+                this.length+=1;
+            }
             
+            currentNode=currentNode.next;
         }
+      
     }
 
 }
@@ -38,4 +58,5 @@ const mylinkedlist=new linkedlist(10);
 mylinkedlist.append(20);
 mylinkedlist.append(30);
 mylinkedlist.prepend(4);
+mylinkedlist.insert(0,2);
 console.log(mylinkedlist);
