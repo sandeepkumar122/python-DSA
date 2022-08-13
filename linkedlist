@@ -24,30 +24,33 @@ class linkedList{
         this.length+=1;
     }
     insertEle(index,value){
+        let Node={
+            value:value,
+            next:null
+        }
         let currentNode=this.head;
         let newNode=this.head;
         let i=0;
-        for(let i=0;i<this.length;i++){
-            // console.log()
-            if(i==index){
-                currentNode.value=value;
-                currentNode.next=newNode;
-                this.length+=1;
-            }
+        let findNext=this.findToIndex(index-1);
+        const nextElement=findNext.next;
+        findNext.next=Node;
+        Node.next=nextElement;
+    }
+    findToIndex(index){
+       let currentNode=this.head;
+        for(let i=0;i<index;i++){
             currentNode=currentNode.next;
-            newNode=newNode.next;
         }
-        // while(currentNode.next!=null){
-            
-        //     if(i==index){
-        //         currentNode.value=value;
-        //         currentNode.next=newNode;
-        //     }
-        //     i++;
-        //     currentNode=currentNode.next;
-        //     newNode=newNode.next;
-        // }
-        
+        return currentNode;
+    }
+    printList(){
+        let currentNode=this.head;
+        let values=[];
+        while(currentNode!=null){
+            values.push(currentNode.value);
+            currentNode=currentNode.next;
+        }
+        return values;
     }
 
 }
@@ -55,4 +58,5 @@ list=new linkedList(4);
 list.addEnd(10);
 list.addStart(6);
 list.insertEle(1,56);
-console.log(list)
+console.log(list.printList());
+// console.log(list.tail)
