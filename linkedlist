@@ -1,62 +1,58 @@
-class linkedlist{
-    constructor(value){
+class linkedList{
+    constructor(head){
         this.head={
-            value:value,
+            value:head,
             next:null
         }
-        this.tail=this.head;
         this.length=1;
+        this.tail=this.head;
     }
-    append(value){
-        let addlinked={
+    addEnd(value){
+        let Node={
             value:value,
             next:null
         }
-        this.tail.next=addlinked;
-        this.tail=addlinked;
+        this.tail.next=Node;
         this.length+=1;
     }
-    prepend(value){
-        let addlinked={
+    addStart(value){
+       let Node={
             value:value,
-            next:this.head
+            next:this.tail
         }
-        this.head=addlinked;
+        this.head=Node;
         this.length+=1;
-      
     }
-    printList(){
-        let arr1=[];
+    insertEle(index,value){
         let currentNode=this.head;
-        let value=0
-        while(currentNode!==null){
-            arr1.push(currentNode.value);
-            currentNode=currentNode.next;
-        }
-        return arr1;
-    }
-    insert(index,value){
-        let currentNode=this.head;
-        let arr1=[];
-        let num=index;
-        for(let i=0;i<=index;i++){
-            if(i==num){
+        let newNode=this.head;
+        let i=0;
+        for(let i=0;i<this.length;i++){
+            // console.log()
+            if(i==index){
                 currentNode.value=value;
-                currentNode.next=currentNode.next;
+                currentNode.next=newNode;
                 this.length+=1;
             }
-            
             currentNode=currentNode.next;
+            newNode=newNode.next;
         }
-      
+        // while(currentNode.next!=null){
+            
+        //     if(i==index){
+        //         currentNode.value=value;
+        //         currentNode.next=newNode;
+        //     }
+        //     i++;
+        //     currentNode=currentNode.next;
+        //     newNode=newNode.next;
+        // }
+        
     }
 
 }
-
-
-const mylinkedlist=new linkedlist(10);
-mylinkedlist.append(20);
-mylinkedlist.append(30);
-mylinkedlist.prepend(4);
-mylinkedlist.insert(0,2);
-console.log(mylinkedlist);
+list=new linkedList(4);
+list.addEnd(10);
+list.addStart(6);
+list.insertEle(1,56);
+console.log(list)
