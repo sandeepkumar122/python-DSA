@@ -52,11 +52,20 @@ class linkedList{
         }
         return values;
     }
+    deleteI(index){
+        let nextElement=this.findToIndex(index);
+        let previousElement=this.findToIndex(index-1);
+        previousElement.next=nextElement.next;
+        this.length--;
+    }
 
 }
 list=new linkedList(4);
 list.addEnd(10);
 list.addStart(6);
 list.insertEle(1,56);
+console.log(list.printList());
+list.deleteI(3);
+list.deleteI(1);
 console.log(list.printList());
 // console.log(list.tail)
