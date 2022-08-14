@@ -1,0 +1,86 @@
+class linkedList:
+    def __init__(self,value):
+        self.head={
+            'value':value,
+            'next':None,
+            'prev':None
+        }
+        self.tail=self.head
+        self.length=1
+        
+    def addStart(self,value):
+        Node={
+            'value':value,
+            'next':self.head,
+            'prev':None
+        }
+        self.head=Node
+        self.length+=1
+        
+    def addEnd(self,value):
+        Node={
+            'value':value,
+            'next':None,
+            'prev':None
+        }
+        Node['prev']=self.tail
+        # print(Node['prev'])
+        self.tail['next']=Node
+        self.tail=Node
+        self.length+=1
+        
+    def insertI(self,index,value):
+        Node={
+            'value':value,
+            'next':None,
+            'prev':None
+        }
+        previousNodeIndex=self.findRemain(index-1)
+        currentNodeIndex=self.findRemain(index)
+        previousNodeIndex['next']=Node
+        Node['prev']=previousNodeIndex
+        Node['next']=currentNodeIndex
+        self.length+=1
+      
+      
+        
+    def findRemain(self,index):
+        remain=self.head
+        for i in range(index+1):
+            currentNode=remain
+            remain=remain['next']
+        return currentNode
+        
+    def delete(self,index):
+        print(self.head)
+        currentNodeIndex=self.findRemain(index-1)
+        previousNode=self.findRemain(index)
+        currentNodeIndex['next']=previousNode['next']
+        previousNode['prev']=currentNodeIndex
+        self.length-=1
+     
+    
+    def printVal(self):
+        valueArr=[]
+        currentNode=self.head
+        for i in range(self.length):
+            valueArr.append(currentNode['value'])
+            currentNode=currentNode['next']
+        print(valueArr)
+        return valueArr
+    def printPrev(self):
+        currentNode=self.tail
+        arrVal=[]
+        for i in range(self.length):
+            arrVal.append(currentNode.prev)
+            currentNode=currentNode.prev
+        print(arrVal) 
+
+
+linked=linkedList(5)
+linked.addStart(6)
+linked.addEnd(7)
+linked.insertI(1,9)
+linked.delete(1)
+
+linked.printPrev()
