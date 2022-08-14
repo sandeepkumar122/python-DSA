@@ -1,71 +1,70 @@
-class linkedList{
-    constructor(head){
-        this.head={
-            value:head,
-            next:null
+class linkedList:
+    def __init__(self,value):
+        self.head={
+            'value':value,
+            'next':None
         }
-        this.length=1;
-        this.tail=this.head;
-    }
-    addEnd(value){
-        let Node={
-            value:value,
-            next:null
+        self.tail=self.head
+        self.length=1
+        
+    def addStart(self,value):
+        Node={
+            'value':value,
+            'next':self.head
         }
-        this.tail.next=Node;
-        this.length+=1;
-    }
-    addStart(value){
-       let Node={
-            value:value,
-            next:this.tail
+        self.head=Node
+        self.length+=1
+        
+    def addEnd(self,value):
+        Node={
+            'value':value,
+            'next':None
         }
-        this.head=Node;
-        this.length+=1;
-    }
-    insertEle(index,value){
-        let Node={
-            value:value,
-            next:null
+        self.tail['next']=Node
+        self.tail=Node
+        self.length+=1
+        
+    def insertI(self,index,value):
+        Node={
+            'value':value,
+            'next':None
         }
-        let currentNode=this.head;
-        let newNode=this.head;
-        let i=0;
-        let findNext=this.findToIndex(index-1);
-        const nextElement=findNext.next;
-        findNext.next=Node;
-        Node.next=nextElement;
-    }
-    findToIndex(index){
-       let currentNode=this.head;
-        for(let i=0;i<index;i++){
-            currentNode=currentNode.next;
-        }
-        return currentNode;
-    }
-    printList(){
-        let currentNode=this.head;
-        let values=[];
-        while(currentNode!=null){
-            values.push(currentNode.value);
-            currentNode=currentNode.next;
-        }
-        return values;
-    }
-    deleteI(index){
-        let nextElement=this.findToIndex(index);
-        let previousElement=this.findToIndex(index-1);
-        previousElement.next=nextElement.next;
-        this.length--;
-    }
+        previousNodeIndex=self.findRemain(index-1)
+        currentNodeIndex=self.findRemain(index)
+        previousNodeIndex['next']=Node
+        Node['next']=currentNodeIndex
+        self.length+=1
+      
+      
+        
+    def findRemain(self,index):
+        remain=self.head
+        for i in range(index+1):
+            currentNode=remain
+            remain=remain['next']
+        return currentNode
+        
+    def delete(self,index):
+        currentNodeIndex=self.findRemain(index-1)
+        previousNode=self.findRemain(index)
+        currentNodeIndex['next']=previousNode['next']
+        self.length-=1
+     
+    
+    def printVal(self):
+        valueArr=[]
+        currentNode=self.head
+        for i in range(self.length):
+            valueArr.append(currentNode['value'])
+            currentNode=currentNode['next']
+        print(valueArr)
+        return valueArr
 
-}
-list=new linkedList(4);
-list.addEnd(10);
-list.addStart(6);
-list.insertEle(1,56);
-console.log(list.printList());
-list.deleteI(3);
-list.deleteI(1);
-console.log(list.printList());
-// console.log(list.tail)
+
+
+linked=linkedList(5)
+linked.addStart(6)
+linked.addEnd(7)
+linked.insertI(1,9)
+linked.delete(1)
+linked.printVal()
