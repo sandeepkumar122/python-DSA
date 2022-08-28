@@ -1,0 +1,77 @@
+class linkedlist{
+    constructor(first){
+        let node={
+            value:first,
+            next:null,
+            prev:null
+        }
+         this.head=node;
+         this.tail=node;
+         this.length=1;
+    }
+    //adding first
+    append(value){
+        let node={
+            value:value,
+            next:this.head,
+            prev:null
+        }
+        this.head.prev=this.head.next
+        this.head=node;
+        this.length+=1;
+    }
+    // adding elment to last
+    addLast(value){
+        let node={
+            value:value,
+            next:null
+        }
+        this.tail.next=node;
+        this.tail=node;
+        this.length+=1;
+    }
+    addIndex(index,value){
+       
+        let element=this.head;
+        let i=0;
+        
+         let num2=this.findIndex(index);
+         let node={
+            value:value,
+            next:num2
+        }
+       let num=this.findIndex(index-1);
+       num.next=node;
+       
+        this.length+=1;
+        
+        // num.next=
+    }
+    findIndex(index){
+       let currentNode=this.head;
+   
+        for(let i=0;i<this.length;i++){
+            if(index==i){
+                console.log(currentNode.prev);
+                return currentNode;
+            }
+            currentNode=currentNode.next;
+        }
+    }
+    printval(){
+        let currentNode=this.head;
+        let values=[];
+        while(currentNode!=null){
+            values.push(currentNode.value);
+            currentNode=currentNode.next;
+        }
+        console.log(values);
+    }
+    
+}
+let linked=new linkedlist(5);
+linked.append(3);
+linked.addLast(6);
+linked.addIndex(1,4);
+linked.printval();
+console.log(linked)
