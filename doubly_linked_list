@@ -1,0 +1,90 @@
+class linkedlist{
+    constructor(first){
+        let node={
+            value:first,
+            next:null,
+            prev:null
+        }
+         this.head=node;
+         this.tail=node;
+         this.length=1;
+    }
+    //adding first
+    append(value){
+        let node={
+            value:value,
+            next:null,
+            prev:null
+        }
+        this.head.prev=node
+        node.next=this.head;
+        this.head=node;
+        this.length+=1;
+    }
+    // adding elment to last
+    addLast(value){
+        let node={
+            value:value,
+            next:null,
+            prev:null
+        }
+        node.prev=this.tail;
+        this.tail.next=node;
+        this.tail=node;
+        this.length+=1;
+    }
+    addIndex(index,value){
+        let element=this.head;
+        let i=0;
+         let num2=this.findIndex(index);
+         let node={
+            value:value,
+            next:num2,
+            prev:null
+        }
+       let num=this.findIndex(index-1);
+       node.prev=num;
+       num2.prev=num
+       num.next=node;
+       console.log("working");
+       console.log(node.prev)
+       console.log("working");
+        this.length+=1;
+    }
+    findIndex(index){
+       let currentNode=this.head;
+   
+        for(let i=0;i<this.length;i++){
+            if(index==i){
+                console.log(currentNode.prev);
+                return currentNode;
+            }
+            currentNode=currentNode.next;
+        }
+    }
+    printval(){
+        let currentNode=this.head;
+        let values=[];
+        while(currentNode!=null){
+            values.push(currentNode.value);
+            currentNode=currentNode.next;
+        }
+        console.log(values);
+    }
+    printValLast(){
+        values=[];
+        let currentNode=this.tail;
+        while(currentNode!=null){
+            values.push(currentNode.value);
+            currentNode=currentNode.prev;
+        }
+    }
+    
+}
+let linked=new linkedlist(5);
+linked.addLast(3);
+linked.append(4);
+// linked.addLast(6);
+linked.addIndex(1,7);
+linked.printval();
+console.log(linked)
