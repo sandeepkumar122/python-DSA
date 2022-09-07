@@ -67,6 +67,22 @@ class linkedlist{
         }
         console.log(values);
     }
+    rev(){
+          var node = this.head;
+          var previous = null;
+        
+          while(node) {
+            
+            var save = node.next;
+         
+            node.next = previous;
+         
+            previous = node;
+          
+            node = save;
+          }
+          return previous;
+    }
     
 }
 let linked=new linkedlist(5);
