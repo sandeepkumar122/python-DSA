@@ -75,7 +75,17 @@ class linkedList:
             arrVal.append(currentNode.prev)
             currentNode=currentNode.prev
         print(arrVal) 
-
+    
+    #reversing singly linkedlist
+    def reverse(self):
+        current=self.head
+        prev=None
+        while(current is not None):
+            next=current['next']
+            current['next']=prev
+            prev=current
+            current=next
+        self.head=prev
 
 linked=linkedList(5)
 linked.addStart(6)
