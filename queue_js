@@ -1,0 +1,34 @@
+class queue{
+    constructor(){
+        this.queue=null;
+        this.last=null;
+        this.length=0;
+    }
+    enqueue(value){
+        const node={
+            value:value,
+            next:null
+        }
+        if(this.length==0){
+            this.queue=node;
+            this.last=node
+        }else{
+            // console.log(this.last)
+            this.last.next=node
+            this.last=node;
+        }
+        this.length++;
+        return this;
+    }
+    dequeue(){
+        this.queue=this.queue.next;
+        this.length--;
+    }
+}
+
+const queues=new queue();
+queues.enqueue("sandeep")
+queues.enqueue("suraj")
+queues.enqueue("sweety")
+queues.dequeue()
+console.log(queues)
