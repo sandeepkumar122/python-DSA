@@ -1,0 +1,42 @@
+class linkedlist{
+    constructor(value){
+        this.value=value;
+        this.next=null;
+    }
+}
+
+class stack{
+    constructor(){
+        this.top=null;
+        this.bottom=null;
+        this.length=0;
+    }
+    peek(){
+        return this.top;
+    }
+    push(value){
+        const getNode=new linkedlist(value);
+        if(this.length===0){
+            this.top=getNode;
+            this.bottom=getNode;
+        }else{
+            const holdingNode=this.top;
+            this.top=getNode;
+            this.top.next=holdingNode;
+        }
+        this.length++;
+        return this;
+    }
+    pop(){
+        const currentNode=this.top;
+        const nextVal=currentNode.next;
+        this.top=nextVal;
+        this.length--;
+    }
+}
+
+const stackL=new stack();
+stackL.push("google")
+stackL.push("starbuck")
+stackL.pop();
+console.log(stackL)
