@@ -1,0 +1,45 @@
+class linkedlist{
+    constructor(value){
+        this.value=value;
+        this.next=null;
+    }
+}
+
+class stack{
+    constructor(){
+        this.stack=[];
+        this.length=0;
+    }
+    peek(){
+        return this.stack[0];
+    }
+    push(value){
+   
+        if(this.length===0){
+            this.stack[0]=value;
+        }else{
+            const stack=[];
+            stack[0]=value;
+             for(let i=0;i<this.length;i++){
+                const currentval=this.stack[i];
+                stack[i+1]=currentval;
+            }
+            this.stack=stack;
+        }
+        this.length++;
+        return this;
+    }
+    pop(){
+        this.stack.shift();
+        this.length--;
+    }
+}
+
+const stackL=new stack();
+stackL.push("google")
+stackL.push("starbuck")
+stackL.push("cool")
+const perk=stackL.peek();
+console.log(perk);
+stackL.pop();
+console.log(stackL)
